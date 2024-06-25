@@ -1,22 +1,22 @@
 # Relatório da criação do projeto:
 
 ## Instalação dos pacotes:
-No pom.xml, na tag dependencies:
-    - Adicionada a dependência javax.servlet
+No pom.xml, na tag dependencies: <br>
+    - Adicionada a dependência javax.servlet <br>
     - Adicionada a dependência spring
 
 ## Arquitetura das pastas do projeto:
 
-src/
-├── main/
-│ ├── java/
-│ │ ├── controller/
-│ │ └── model/
-├── view/
-│ ├── assets/
-│ │ ├── css/
-│ │ ├── js/
-│ │ ├── templates/
-│ │ └── img/
-├── webapp/
-| ├── WEB-INF/
+src/ <br>
+├── main/ <br>
+│ ├── java/ <br>
+│ │ ├── controller/ <br>
+│ │ └── model/ <br>
+├── view/ <br>
+│ ├── assets/ <br>
+│ │ ├── css/ <br>
+│ │ ├── js/ <br>
+│ │ ├── templates/ <br>
+│ │ └── img/ <br>
+├── webapp/ <br>
+| ├── WEB-INF/ <br>
