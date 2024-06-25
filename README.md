@@ -10,25 +10,21 @@ No pom.xml, na tag dependencies: <br>
 src/ <br>
 ├── main/ <br>
 │ ├── java/ <br>
-│ │ ├── controller/ <br>
+│ │ ├── spring/ <br>
+│ │ |  ├── controller/ <br>
 │ │ └── model/ <br>
-├── view/ <br>
-│ ├── assets/ <br>
-│ │ ├── css/ <br>
-│ │ ├── js/ <br>
-│ │ ├── templates/ <br>
-│ │ └── img/ <br>
-├── webapp/ <br>
-│ ├── WEB-INF/ <br>
+│ ├── resources/ <br>
+│ │ ├── static/ <br>
+│ │ |  ├── js/ <br>
+│ │ |  ├── css/ <br>
+│ │ |  └── img/ <br>
 
 <br>
-- "src/main/java/controller/":
+- "src/main/java/spring/controller":
 <br>
 - "src/main/java/model":
 <br>
-- "src/view/assets/": 
-<br>
-- "src/webapp/WEB-INF/": 
+- "src/main/resources/static/": 
 
 <br><br>
 **Alunos:**<br>
