@@ -2,19 +2,21 @@
 
 ## Instalação dos pacotes:
 No pom.xml, na tag dependencies:
-    -> adicionada a dependência javax.servlet
+    - Adicionada a dependência javax.servlet
+    - Adicionada a dependência spring
 
 ## Arquitetura das pastas do projeto:
 
-src/ <br>
-    main/ <br>
-        java/ <br>
-            controller/ <br>
-            model/ <br>
-    view/ <br>
-        assets/ <br>
-            css/ <br>
-            js/ <br>
-            img/ <br>
-    webapp/<br>
-        WEB-INF<br>
+src/
+├── main/
+│ ├── java/
+│ │ ├── controller/
+│ │ └── model/
+├── view/
+│ ├── assets/
+│ │ ├── css/
+│ │ ├── js/
+│ │ ├── templates/
+│ │ └── img/
+├── webapp/
+| ├── WEB-INF/
