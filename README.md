@@ -19,7 +19,7 @@ src/ <br>
 │ │ ├── templates/ <br>
 │ │ └── img/ <br>
 ├── webapp/ <br>
-| ├── WEB-INF/ <br>
+│ ├── WEB-INF/ <br>
 
 <br><br>
 Alunos:
