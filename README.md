@@ -1,5 +1,7 @@
 # Relatório da criação do projeto:
 
+## Como inicializar o projeto:
+
 ## Instalação dos pacotes:
 No pom.xml, na tag dependencies: <br>
     - Adicionada a dependência javax.servlet <br>

@@ -1,2 +1,5 @@
 # maven compiler folder
 target/
+
+# vscode folder
+.vscode/
