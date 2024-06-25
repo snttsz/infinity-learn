@@ -21,6 +21,15 @@ src/ <br>
 ├── webapp/ <br>
 │ ├── WEB-INF/ <br>
 
+<br>
+- "src/main/java/controller/":
+<br>
+- "src/main/java/model":
+<br>
+- "src/view/assets/": 
+<br>
+- "src/webapp/WEB-INF/": 
+
 <br><br>
-Alunos:
+**Alunos:**<br>
 TODO: marcar github/nome dos alunos
