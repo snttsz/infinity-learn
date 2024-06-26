@@ -1,7 +1,7 @@
 # Relatório da criação do projeto:
 
 ## Como inicializar o projeto:
-`mvn clean install`
+`mvn clean install` <br>
 `mvn spring-boot:run`
 
 Para acessar a página inicial:
