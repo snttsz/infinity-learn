@@ -29,6 +29,7 @@ src/ <br>
 │ │ |  ├── js/ <br>
 │ │ |  ├── css/ <br>
 │ │ |  └── img/ <br>
+│ │ └── templates/ <br>
 
 <br>
 - "src/main/java/spring/controller":
