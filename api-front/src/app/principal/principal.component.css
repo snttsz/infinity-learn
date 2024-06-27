@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+body
+{
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    width: 100%;
+    background-color: #201b2c;
+}
+
+.left-baloon
+{
+    width: 30%;
+    align-self: start;
+    position: absolute;
+}
+
+.center-baloon
+{
+    width: 30%;
+    align-self: center;
+    position: absolute;
+}
+
+.right-baloon
+{
+    position: absolute;
+    width: 30%;
+    align-self: end;
+}
+
+.div-bandeirolas
+{
+    width: 100%;
+    height: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-div
+{
+    width: 100%;
+    height: 10vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px -5px 40px #181420;
+}
+
+.logo-img
+{
+    width: 20%;
+}
+
+.img-anywhere
+{
+    max-width: 80%;
+    max-height: 80%;
+
+}
+
+.div-marketing
+{
+    width: 100%;
+    height: 100%;
+    align-self: start;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #201b2c;
+}
+
+.div-draws
+{
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 2vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(26, 25, 25);
+    border-radius: 10px;
+    box-shadow: 0px 10px 40px -12px #0a0a0a;
+}
+
+.div-draws p
+{
+    color: white;
+    font-size: x-large;
+    margin-top: 1vw;
+}
+
+.interest-div-text
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 7vh;
+    color: #f0ffffde;
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+.btn-sobrenos
+{
+    width: 20%;
+    padding: 16px 0px;
+    margin: 5vw;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #2b134b;
+    background: #00ff88;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+
+.btn-sobrenos:hover
+{
+    background-color: #0ab967;
+}
