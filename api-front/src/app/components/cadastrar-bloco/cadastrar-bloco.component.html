@@ -3,31 +3,65 @@
 
 <h1>CADASTRO</h1>
 
-<div class="card-login-base">
+<div class="card-login-base" *ngIf="partOfRegister==1">
     <div class="textfield">
         <label for="user">Usuário</label>
-        <input type="text" name="user" placeholder="Usuário">
+        <input type="text" name="user" placeholder="Usuário" required>
+        <!-- <p>Nome de usuário já existe!</p> -->
+        <!-- <p>Nome de usuário precisa ser preenchido!</p> -->
     </div>
     
     <div class="textfield">
         <label for="password">Senha</label>
-        <input type="password" name="password" placeholder="Senha">
+        <input type="password" name="password" placeholder="Senha" required>
     </div>
     
     <div class="textfield">
         <label for="password">Repita sua senha</label>
-        <input type="password" name="password" placeholder="Repita a senha">
+        <input type="password" name="password" placeholder="Repita sua senha" required>
+        <!-- <p>As senhas não coincidem!</p> -->
     </div>
 
 </div>
 
 <!-- Cadastro parte 2 -->
 
+<div class="card-login-base" *ngIf="partOfRegister==2">
 
+    <div class="textfield">
+        <label for="name">Nome completo</label>
+        <input type="text" name="name" placeholder="Nome Completo">
+        <!-- <p>Por favor, não utilize números neste campo!</p> -->
+    </div>
+    
 
+    <div class="textfield">
+        <label for="apelido">Do que podemos te chamar? (Este será seu nome visível para a comunidade)</label>
+        <input type="text" name="apelido" placeholder="Nome">
+    </div>
 
+    <div class="textfield">
+        <label for="email">Email</label>
+        <input type="text" name="email" placeholder="Seu email">
+        <!-- <p>Email inválido!</p> -->
+    </div>
 
-<button class="btn-continuar">Continuar</button>
+    <div class="textfield">
+        <label for="numerocelular">Número de celular</label>
+        <input type="text" name="numerocelular" placeholder="Seu número de celular">
+        <!-- <p>Número de celular inválido!</p> -->
+    </div>
+
+</div>
+
+<!-- Cadastro parte 3 -->
+<div class="card-login-base" *ngIf="partOfRegister==3">
+
+    <p>TESTEEEE</p>
+
+</div>
+
+<button (click)="onContinuarButtonClick()" class="btn-continuar">Continuar</button>
 <button class="btn-voltar" (click)="onVoltarButtonClick()">Voltar</button>
 
 <!-- <p style="color: #f0ffffde; margin-top: 1vw;">Ainda não tem uma conta?</p> --> 

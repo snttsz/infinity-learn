@@ -80,6 +80,12 @@ button:hover
     background-color: #0ab967;
 }
 
+button:disabled
+{
+    background-color: #098b4e;
+    cursor:default;
+}
+
 .card-login-base
 {
     width: 100%; /* 60% of the total size of the div */
@@ -88,4 +94,11 @@ button:hover
     align-items: center;
     flex-direction: column;
     /* padding: 30px 35px; */
+}
+
+.textfield p
+{
+    color: red;
+    margin-top: 0.5vw;
+    margin-bottom: -0.5vw;
 }
