@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoginComponent } from "./login/login.component";
-import { PrincipalComponent } from "./principal/principal.component";
+
+import { LoginComponent } from "./pages/login/login.component";
+import { PrincipalComponent } from "./pages/principal/principal.component";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import { PrincipalComponent } from "./principal/principal.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+
+export class AppComponent 
+{
   title = 'api-front';
 }
