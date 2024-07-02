@@ -23,6 +23,24 @@ No pom.xml, na tag dependencies: <br>
 
 ## Arquitetura das pastas do projeto:
 
+Front-end: <br>
+src/app <br>
+├── classes/ <br>
+├── components/ <br>
+├── enums/ <br>
+├── pages/ <br>
+
+<br>
+- "src/app/classes":
+<br>
+- "src/app/components":
+<br>
+- "src/app/enums":
+<br>
+- "src/app/pages": 
+<br>
+
+Back-end: <br>
 src/ <br>
 ├── main/ <br>
 │ ├── java/ <br>
