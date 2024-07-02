@@ -28,7 +28,7 @@ src/app/ <br>
 ├─ classes/ <br>
 ├─ components/ <br>
 ├─ enums/ <br>
-└── pages/ <br>
+└─ pages/ <br>
 
 <br>
 - "src/app/classes":
