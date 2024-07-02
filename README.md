@@ -11,9 +11,9 @@ Front-end: <br>
 
 Para acessar a página inicial:
 
-`http://localhost:8081/`
+`http://localhost:4200/`
 
-Atualmente, a porta especificada para rodar o servidor é 8081, porém isso pode ser modificado no 
+Atualmente, a porta especificada para rodar o servidor (back-end) é 8081, porém isso pode ser modificado no 
 arquivo "src/main/resources/application.properties" com o comando server.port. 
 
 ## Instalação dos pacotes:
