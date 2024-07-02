@@ -5,15 +5,16 @@
 
 <div class="textfield">
     <label for="user">Usuário</label>
-    <input type="text" name="user" placeholder="Usuário">
+    <input type="text" name="user" placeholder="Usuário" [(ngModel)]="usuario">
 </div>
 
 <div class="textfield">
     <label for="password">Senha</label>
-    <input type="password" name="password" placeholder="Senha">
+    <input type="password" name="password" placeholder="Senha" [(ngModel)]="senha">
+    <p *ngIf="dadosInvalidos">Usuário ou senha inválidos.</p>
 </div>
 
-<button class="btn-login">Entrar</button>
+<button class="btn-login" (click)="onEntrarButtonClick()">Entrar</button>
 
 <p style="color: #f0ffffde; margin-top: 1vw;">Ainda não tem uma conta?</p>
 

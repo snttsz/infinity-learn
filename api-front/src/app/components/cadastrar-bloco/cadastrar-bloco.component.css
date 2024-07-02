@@ -23,6 +23,14 @@
     box-sizing: border-box;
 }
 
+p
+{
+    margin-top: 1vh;
+    color: #f0ffffde;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
 .textfield > label
 {
     color: #f0ffffde;
@@ -99,6 +107,26 @@ button:disabled
 .textfield p
 {
     color: red;
+    font-size: medium;
+    font-weight: normal;
     margin-top: 0.5vw;
     margin-bottom: -0.5vw;
+}
+
+.btn-atualizar-foto
+{
+    width: 100%;
+    padding: 16px 0px;
+    margin: 8px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #2b134b;
+    background: #00ff88;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
 }

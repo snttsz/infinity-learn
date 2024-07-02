@@ -1,9 +1,14 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { HttpManager } from '../../classes/http-manager';
 
 @Component({
   selector: 'app-login-bloco',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
+  providers: [HttpManager],
   templateUrl: './login-bloco.component.html',
   styleUrl: './login-bloco.component.css'
 })
@@ -12,20 +17,27 @@ export class LoginBlocoComponent
 {
 
   @Output() buttonClick = new EventEmitter<void>();
-  // public usuario: string = "";
-  // public senha: string = "";
+  
+  usuario: string = "";
+  senha: string = "";
 
-  // validarUsuario(): boolean
-  // {
-  //     // usuario é this.usuario e senha this.senha  
-  //     // retornar false se o usuário for inválido e true se for válido
-  //     return true;
-  // }
+  dadosInvalidos: boolean = false;
 
-  cadastrarClick() 
+  constructor(private httpManager : HttpManager) {};
+
+  onEntrarButtonClick(): void
   {
-    // alert("aaaaaaaaaaaa")
-    // this.router.navigate(['/cadastrar-bloco']);
+    /* 
+      TODO -> verificar credenciais no banco de dados
+    */
+    if (true)
+    {
+
+    }
+    else
+    {
+      this.dadosInvalidos = true;
+    }
   }
 
   onCadastrarButtonClick(): void

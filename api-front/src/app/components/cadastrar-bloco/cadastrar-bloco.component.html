@@ -3,23 +3,30 @@
 
 <h1>CADASTRO</h1>
 
+<!-- Cadastro parte 1 -->
+
 <div class="card-login-base" *ngIf="partOfRegister==1">
     <div class="textfield">
         <label for="user">Usuário</label>
-        <input type="text" name="user" placeholder="Usuário" required>
-        <!-- <p>Nome de usuário já existe!</p> -->
-        <!-- <p>Nome de usuário precisa ser preenchido!</p> -->
+        <input type="text" name="user" placeholder="Usuário" required [(ngModel)]="usuario">
+        
+        <p *ngIf="userAlreadyExists">Nome de usuário já existe!</p>
+        <p *ngIf="userEmpty">Nome de usuário precisa ser preenchido!</p>
+    
     </div>
     
     <div class="textfield">
         <label for="password">Senha</label>
-        <input type="password" name="password" placeholder="Senha" required>
+        <input type="password" name="password" placeholder="Senha" required [(ngModel)]="senha">
     </div>
     
     <div class="textfield">
         <label for="password">Repita sua senha</label>
-        <input type="password" name="password" placeholder="Repita sua senha" required>
-        <!-- <p>As senhas não coincidem!</p> -->
+        <input type="password" name="password" placeholder="Repita sua senha" required [(ngModel)]="confirmacaosenha">
+        
+        <p *ngIf="passwordsDontMatch">As senhas não coincidem!</p>
+        <p *ngIf="passwordEmpty">Senha precisa ser preenchida!</p>
+    
     </div>
 
 </div>
@@ -30,26 +37,27 @@
 
     <div class="textfield">
         <label for="name">Nome completo</label>
-        <input type="text" name="name" placeholder="Nome Completo">
-        <!-- <p>Por favor, não utilize números neste campo!</p> -->
+        <input type="text" name="name" placeholder="Nome Completo" [(ngModel)]="nomeCompleto">
+        
+        <p *ngIf="fullNameHaveNumber">Por favor, não utilize números neste campo!</p>
+        <p *ngIf="fullNameEmpty">Nome completo precisa ser preenchido!</p>
+    
     </div>
     
 
     <div class="textfield">
         <label for="apelido">Do que podemos te chamar? (Este será seu nome visível para a comunidade)</label>
-        <input type="text" name="apelido" placeholder="Nome">
+        <input type="text" name="apelido" placeholder="Nome" [(ngModel)]="apelido">
+
+        <p *ngIf="nicknameEmpty">Por favor, preencha com seu nome!</p>
     </div>
 
     <div class="textfield">
         <label for="email">Email</label>
-        <input type="text" name="email" placeholder="Seu email">
-        <!-- <p>Email inválido!</p> -->
-    </div>
-
-    <div class="textfield">
-        <label for="numerocelular">Número de celular</label>
-        <input type="text" name="numerocelular" placeholder="Seu número de celular">
-        <!-- <p>Número de celular inválido!</p> -->
+        <input type="text" name="email" placeholder="Seu email" [(ngModel)]="email">
+        
+        <p *ngIf="invalidEmail">Email inválido!</p>
+        <p *ngIf="emailEmpty">Email precisa ser preenchido!</p>
     </div>
 
 </div>
@@ -57,12 +65,14 @@
 <!-- Cadastro parte 3 -->
 <div class="card-login-base" *ngIf="partOfRegister==3">
 
-    <p>TESTEEEE</p>
+    <p>Adicione uma foto de perfil!</p>
+    
+    <div class="textfield">
+        <input type="file" name="profilePicture" style="text-align: center;" (change)="onFileSelected($event)"> 
+    </div>
 
 </div>
 
+<button *ngIf="partOfRegister==3" (click)="onAtualizarFotoButtonClick()" class="btn-atualizar-foto">Atualizar foto</button>
 <button (click)="onContinuarButtonClick()" class="btn-continuar">Continuar</button>
 <button class="btn-voltar" (click)="onVoltarButtonClick()">Voltar</button>
-
-<!-- <p style="color: #f0ffffde; margin-top: 1vw;">Ainda não tem uma conta?</p> --> 
-<!-- <button (click)="onCadastrarButtonClick()" class="btn-cadastrar">Cadastrar</button>  -->
