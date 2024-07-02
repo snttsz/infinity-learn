@@ -38,7 +38,7 @@ src/app/ <br>
 - "src/app/enums":
 <br>
 - "src/app/pages": 
-<br>
+<br><br>
 
 Back-end: <br>
 src/ <br>
