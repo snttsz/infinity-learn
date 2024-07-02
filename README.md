@@ -1,8 +1,13 @@
 # Relatório da criação do projeto:
 
 ## Como inicializar o projeto:
+Back-end: <br>
 `mvn clean install` <br>
-`mvn spring-boot:run`
+`mvn spring-boot:run` <br><br>
+
+Front-end:
+`ng build` <br>
+`ng s` <br>
 
 Para acessar a página inicial:
 
