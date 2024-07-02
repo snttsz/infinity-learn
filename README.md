@@ -5,7 +5,7 @@ Back-end: <br>
 `mvn clean install` <br>
 `mvn spring-boot:run` <br><br>
 
-Front-end:
+Front-end: <br>
 `ng build` <br>
 `ng s` <br>
 
