@@ -16,6 +16,7 @@ public class UserDBController
     public ResponseEntity<String> handleRegisterUserDB(@RequestParam String user, @RequestParam String password, @RequestParam String fullName, @RequestParam String nickName, @RequestParam String email)
     {
         // TODO -> registrar usuario no banco de dados
+        
         String userId = "1";
         return ResponseEntity.ok(userId);
     }
