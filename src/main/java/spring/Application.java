@@ -4,6 +4,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 import model.SQLiteConnectionManager;
 import model.SQLiteTableManager;
+import model.DAO.UsuarioDAO;
+import model.system.Usuario;
+
+import java.util.ArrayList;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,8 +23,16 @@ public class Application
 		SQLiteTableManager sqLiteTableManager = new SQLiteTableManager();
 		
 		
+		UsuarioDAO ud = new UsuarioDAO();
 
- 
+		ud.delete(1);
+
+		ArrayList<Usuario> array = ud.selectAll();
+
+		for(Usuario u : array)
+		{
+			Usuario.printarUsuario(u);
+		}
 
 	}
 }
