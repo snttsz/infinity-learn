@@ -42,7 +42,7 @@ public class QuestaoDAO extends DAO<Questao>{
     }
 
     @Override
-    public void insert(Questao curso) 
+    public void insert(Questao questao) 
     {
         try
         {
@@ -52,12 +52,15 @@ public class QuestaoDAO extends DAO<Questao>{
             
             String instrucao = "INSERT INTO " + QuestaoDAO.nomeTabela +  
             "(" + 
-            Questao.Coluna.TEXTO.getNomeColuna() +
+            Questao.Coluna.TEXTO.getNomeColuna() + "," +
+            Questao.Coluna.ID_TAREFA.getNomeColuna() +
             ")" +
-            "VALUES(?);";
+            "VALUES(?,?);";
 
-            PreparedStatement stmt = conexao.prepareStatement(instrucao);            
-            stmt.setString(1, curso.getTexto());
+            PreparedStatement stmt = conexao.prepareStatement(instrucao);      
+                  
+            stmt.setString(1, questao.getTexto());
+            stmt.setInt(2, questao.getIdTarefa());
             stmt.executeUpdate();
         }
         catch(Exception e)
@@ -72,54 +75,58 @@ public class QuestaoDAO extends DAO<Questao>{
     }
 
     @Override
-    public ArrayList<Questao> selectAll() {
+    public ArrayList<Questao> selectAll() 
+    {
         ResultSet rs = null;
-        ArrayList<Questao> cursos = new ArrayList<>();
+        ArrayList<Questao> questoes = new ArrayList<>();
         Connection conexao = null;
         PreparedStatement stmt = null;
         
-        try {
+        try 
+        {
             Class.forName("org.sqlite.JDBC");
             String url = "jdbc:sqlite:src/main/resources/database/database.db";
             conexao = DriverManager.getConnection(url);
     
-            String instrucao = "SELECT * FROM " + QuestaoDAO.nomeTabela; // Assumindo que o nome da tabela é "curso"
+            String instrucao = "SELECT * FROM " + QuestaoDAO.nomeTabela; 
     
             stmt = conexao.prepareStatement(instrucao);
             rs = stmt.executeQuery();
     
-            while (rs.next()) {
+            while(rs.next()) 
+            {
                 Questao questao = new Questao();
-                questao.setId(rs.getInt("id"));
-                questao.setTexto(rs.getString("texto"));
-                cursos.add(questao);
+
+                questao.setId(rs.getInt(Questao.Coluna.ID.getNomeColuna()));
+                questao.setTexto(rs.getString(Questao.Coluna.ID_TAREFA.getNomeColuna()));
+                questao.setIdTarefa(rs.getInt(Questao.Coluna.ID_TAREFA.getNomeColuna()));
+                
+                questoes.add(questao);
             }
         } 
-        catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Erro ao executar consulta: " + e.getMessage());
+        catch (ClassNotFoundException | SQLException e) 
+        {
+            System.out.println("Erro ao selecionar todas as questões: " + e.getMessage());
         } 
-        finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conexao != null) conexao.close();
-            } catch (SQLException e) {
-                System.out.println("Erro ao fechar recursos: " + e.getMessage());
-            }
+        finally
+        {
+            SQLiteConnectionManager.desconectar();
         }
         
-        return cursos;
+        return questoes;
     }
     
     @Override
-    public Questao selectById(int id) {
+    public Questao selectById(int id) 
+    {
     
-        Questao questao = null;
+        Questao questao = new Questao();
         Connection conexao = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
     
-        try {
+        try 
+        {
             Class.forName("org.sqlite.JDBC");
             String url = "jdbc:sqlite:src/main/resources/database/database.db";
             conexao = DriverManager.getConnection(url);
@@ -130,25 +137,72 @@ public class QuestaoDAO extends DAO<Questao>{
             stmt.setInt(1, id);
             rs = stmt.executeQuery();
 
-            if (rs.next()) {
-                questao = new Questao();
-                questao.setId(rs.getInt("id"));
-                questao.setTexto(rs.getString("texto"));
+            while(rs.next()) 
+            {
+                questao.setId(rs.getInt(Questao.Coluna.ID.getNomeColuna()));
+                questao.setTexto(rs.getString(Questao.Coluna.TEXTO.getNomeColuna()));
+                questao.setIdTarefa(rs.getInt(Questao.Coluna.ID_TAREFA.getNomeColuna()));
             }
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Erro ao buscar curso por ID: " + e.getMessage());
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conexao != null) conexao.close();
-            } catch (SQLException e) {
-                System.out.println("Erro ao fechar recursos: " + e.getMessage());
-            }
+        } 
+        catch (ClassNotFoundException | SQLException e) 
+        {
+            System.out.println("Erro ao selecionar a questão pelo ID: " + e.getMessage());
+        } 
+        finally 
+        {
+            SQLiteConnectionManager.desconectar();
+
         }
         
         return questao;
     }
+
+    /*   
+     * Método responsável por retornar todas as questões de uma tarefa
+     */
+    public ArrayList<Questao> selectAllByIdTarefas(int idTarefa) 
+    {
+        ArrayList<Questao> questoes = new ArrayList<>();
+        Connection conexao = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+    
+        try 
+        {
+            Class.forName("org.sqlite.JDBC");
+            String url = "jdbc:sqlite:src/main/resources/database/database.db";
+            conexao = DriverManager.getConnection(url);
+
+            String instrucao = "SELECT * FROM " + QuestaoDAO.nomeTabela + " WHERE " + Questao.Coluna.ID_TAREFA.getNomeColuna() + " = ?";
+
+            stmt = conexao.prepareStatement(instrucao);
+            stmt.setInt(1, idTarefa);
+            rs = stmt.executeQuery();
+
+            while(rs.next()) 
+            {
+                Questao questao = new Questao();
+
+                questao.setId(rs.getInt(Questao.Coluna.ID.getNomeColuna()));
+                questao.setTexto(rs.getString(Questao.Coluna.TEXTO.getNomeColuna()));
+                questao.setIdTarefa(rs.getInt(Questao.Coluna.ID_TAREFA.getNomeColuna()));
+
+                questoes.add(questao);
+            }
+        } 
+        catch (ClassNotFoundException | SQLException e) 
+        {
+            System.out.println("Erro ao selecionar a questão pelo ID: " + e.getMessage());
+        } 
+        finally 
+        {
+            SQLiteConnectionManager.desconectar();
+
+        }
+        
+        return questoes;
+    }
+
 
 
     @Override
@@ -164,13 +218,16 @@ public class QuestaoDAO extends DAO<Questao>{
             
             String instrucao = "UPDATE " + QuestaoDAO.nomeTabela + " SET " +
             Questao.Coluna.TEXTO.getNomeColuna() + " = ?, " +
+            Questao.Coluna.ID_TAREFA.getNomeColuna() + " = ? " +
             "WHERE id = ?";
             
             
             PreparedStatement stmt = conexao.prepareStatement(instrucao);
             
             stmt.setString(1, questao.getTexto());
-            stmt.setInt(2, questao.getId());
+            stmt.setInt(2, questao.getIdTarefa());
+            stmt.setInt(3, questao.getId());
+
 
             stmt.executeUpdate();
             

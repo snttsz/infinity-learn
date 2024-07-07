@@ -76,6 +76,15 @@ public class Usuario
     {
         this.linkFoto = linkFoto;
     }
+    public String getTipo() 
+    {
+        return tipo;
+    }
+
+    public void setTipo(String tipo)
+    {
+        this.tipo = tipo;
+    }
 
     /* 
      * Enum com as tabelas da classe
@@ -104,15 +113,6 @@ public class Usuario
     }
     
 
-    public String getTipo() 
-    {
-        return tipo;
-    }
-
-    public void setTipo(String tipo)
-    {
-        this.tipo = tipo;
-    }
 
     /* 
      * Enum com os tipos possíveis de usuários

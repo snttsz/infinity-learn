@@ -4,7 +4,11 @@ import org.springframework.context.annotation.ComponentScan;
 
 import model.SQLiteConnectionManager;
 import model.SQLiteTableManager;
+import model.DAO.QuestaoDAO;
+import model.DAO.TarefaDAO;
 import model.DAO.UsuarioDAO;
+import model.system.Questao;
+import model.system.Tarefa;
 import model.system.Usuario;
 
 import java.util.ArrayList;
@@ -23,16 +27,21 @@ public class Application
 		SQLiteTableManager sqLiteTableManager = new SQLiteTableManager();
 		
 		
-		UsuarioDAO ud = new UsuarioDAO();
+		TarefaDAO tarefaDAO = new TarefaDAO();
+		QuestaoDAO questaoDAO = new QuestaoDAO();
 
-		ud.delete(1);
-
-		ArrayList<Usuario> array = ud.selectAll();
-
-		for(Usuario u : array)
+		Questao questao = new Questao("questao d", 2);
+		Tarefa tarefa = new Tarefa(9, 1);
+		
+		tarefaDAO.delete(2);
+		
+		for(Tarefa t: tarefaDAO.selectAll())
 		{
-			Usuario.printarUsuario(u);
+			Tarefa.printarTarefa(t);
 		}
+
+
+
 
 	}
 }
