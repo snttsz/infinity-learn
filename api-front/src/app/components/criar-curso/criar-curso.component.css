@@ -1,0 +1,40 @@
+.div-criar-curso
+{
+    /* margin-left: 5vw; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.btn-criar-curso
+{
+    margin-top: 1vw;
+    
+    width: 100%;
+    padding: 16px 16px;
+    margin: 2px;
+    margin-top: 1vw;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: small;
+    color: #2b134b;
+    background: #00ff88;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+
+button:hover
+{
+    background: #02ff89b7;
+}
+
+.img-criar-curso
+{
+    width: 5vw;
+    height: 5vw;
+}

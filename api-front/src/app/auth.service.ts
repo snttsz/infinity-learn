@@ -10,9 +10,19 @@ export class AuthService
 
   constructor() { }
 
-  login() 
+  login(username: string, nickname: string, email: string, urlPic: string, fullName: string) 
   {
     this.isLoggedIn = true;
+
+    const currentUser = {
+      username: username,
+      nickname: nickname,
+      email: email,
+      urlPic: urlPic,
+      fullName: fullName,
+    };
+
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
   }
 
   logout() 
@@ -23,5 +33,10 @@ export class AuthService
   isLoggedInUser(): boolean 
   {
     return this.isLoggedIn; 
+  }
+
+  getCurrentUser(): any 
+  {
+    return JSON.parse(localStorage.getItem('currentUser') || '{}');
   }
 }

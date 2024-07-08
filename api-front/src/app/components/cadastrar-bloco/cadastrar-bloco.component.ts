@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { FileLocale } from '../../enums/enums.enums';
 import { HttpManager } from '../../classes/http-manager';
@@ -66,7 +67,7 @@ export class CadastrarBlocoComponent
 
     partOfRegister: number = 1;
 
-    constructor(private httpManager: HttpManager) { }
+    constructor(private httpManager: HttpManager, private router: Router) { }
 
     public onVoltarButtonClick(): void
     {
@@ -92,10 +93,10 @@ export class CadastrarBlocoComponent
     {
         if (this.linkFotoDePerfil)
         {
-            this.errorPic = !this.httpManager.requestSaveFile(this.linkFotoDePerfil, FileLocale.PROFILE_PICTURE, this.userId);
-            this.errorPic = this.errorPic && await this.httpManager.updateUserProfileLink(this.userId, this.linkFotoDePerfil.name);
+            let errorUploadPic = !await this.httpManager.requestSaveFile(this.linkFotoDePerfil, FileLocale.PROFILE_PICTURE, this.userId);
+            let errorPic = await this.httpManager.updateUserProfileLink(this.userId, this.linkFotoDePerfil.name);
 
-            if (this.errorPic)
+            if (errorPic && errorUploadPic)
             {
                 alert("Não foi possível atualizar sua foto de perfil no momento. Tente novamente mais tarde!");
             }
@@ -121,8 +122,8 @@ export class CadastrarBlocoComponent
             {
                 this.userId = await this.httpManager.registerUser(
                     this.usuario,
-                    this.nomeCompleto,
                     this.senha,
+                    this.nomeCompleto,
                     this.apelido,
                     this.email
                 );
@@ -139,7 +140,7 @@ export class CadastrarBlocoComponent
         }
         else if (this.partOfRegister > 3)
         {
-            /* TODO -> ir pra outra pagina */
+            this.router.navigate(["/home"]);
         }
 
         return result;

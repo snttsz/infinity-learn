@@ -1,1 +1,40 @@
-<p>home-page works!!!!!!!!!!!!!!!!!!!!!</p>
+
+<div class="main">
+    
+    <div class="painel-usuario">
+
+        <img [src]="profilePhotoUrl" alt="" class="img-user" >
+        <p>Olá</p>
+        <p class="painel-usuario-p">{{ userName }}</p>
+
+        <div class="div-messages">
+            <img src="message.png" alt="" class="img-messages">
+            <button class="btn-mensagens">Mensagens</button>
+        </div>
+        <button class="btn-editar-usuario">Configurar sua conta</button>
+
+    </div>
+
+    <div class="painel-cursos">
+        
+        <div class="div-area-aluno">
+            <p>Área Aluno</p>
+            <br>
+            <app-meus-cursos></app-meus-cursos>
+        </div>
+        
+        
+        <div class="div-area-professor">
+            <p>Área Professor</p>
+            <br>
+            <div class="div-area-professor-buttons">
+                <app-criar-curso></app-criar-curso>
+                <app-ver-curso></app-ver-curso>
+                <app-editar-curso></app-editar-curso>
+                <app-deletar-curso></app-deletar-curso>
+            </div>
+        </div>
+        
+    </div>
+
+</div>

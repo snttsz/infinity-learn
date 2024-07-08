@@ -1,8 +1,10 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { HttpManager } from '../../classes/http-manager';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-login-bloco',
@@ -23,16 +25,18 @@ export class LoginBlocoComponent
 
   dadosInvalidos: boolean = false;
 
-  constructor(private httpManager : HttpManager) {};
+  constructor(private httpManager : HttpManager, private authService: AuthService, private router: Router) {};
 
-  onEntrarButtonClick(): void
+  public async onEntrarButtonClick(): Promise<void>
   {
-    /* 
-      TODO -> verificar credenciais no banco de dados
-    */
-    if (true)
-    {
 
+    let result: string = await this.httpManager.loginUser(this.usuario, this.senha);
+    let resultJson = JSON.parse(result);
+
+    if (result != "null" && result != "error")
+    {
+      this.authService.login(resultJson.nome, resultJson.apelido, resultJson.email, resultJson.linkFoto, resultJson.nomeCompleto);
+      this.router.navigate(["/home"]);
     }
     else
     {
