@@ -50,7 +50,8 @@ export class HttpManager
             
             if (typeof response === 'string') 
             {
-                result = parseInt(response);
+                console.log(response);
+                // result = parseInt(response);
             }
         } catch (error) 
         {
