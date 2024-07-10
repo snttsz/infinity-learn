@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { HttpManager } from '../../classes/http-manager';
 import { AuthService } from '../../auth.service';
 
+import { HttpRoutes } from '../../enums/enums.enums';
+
 @Component({
   selector: 'app-login-bloco',
   standalone: true,
@@ -35,7 +37,7 @@ export class LoginBlocoComponent
 
     if (result != "null" && result != "error")
     {
-      this.authService.login(resultJson.nome, resultJson.apelido, resultJson.email, resultJson.linkFoto, resultJson.nomeCompleto);
+      this.authService.login(resultJson.nome, resultJson.apelido, resultJson.email, HttpRoutes.MEDIA_CONTENT_GETTER + resultJson.linkFoto, resultJson.nomeCompleto, resultJson.id);
       this.router.navigate(["/home"]);
     }
     else

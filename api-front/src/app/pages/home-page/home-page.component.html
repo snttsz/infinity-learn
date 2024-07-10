@@ -1,38 +1,89 @@
 
 <div class="main">
     
-    <div class="painel-usuario">
+    <div class="painel-usuario" *ngIf="!configurarConta && !mudarInfo">
 
         <img [src]="profilePhotoUrl" alt="" class="img-user" >
-        <p>Olá</p>
+        <p style="margin-top: 1vw">Olá</p>
         <p class="painel-usuario-p">{{ userName }}</p>
 
         <div class="div-messages">
             <img src="message.png" alt="" class="img-messages">
             <button class="btn-mensagens">Mensagens</button>
         </div>
-        <button class="btn-editar-usuario">Configurar sua conta</button>
+        <button class="btn-editar-usuario" (click)="onConfigurarContaClick()">Configurar sua conta</button>
+        <button class="btn-sair-da-conta" (click)="onSairButtonClick()">Sair</button>
+
+    </div>
+
+    <div class="painel-configurar-conta" *ngIf="configurarConta && !mudarInfo">
+        <p style="justify-self: start;">O que deseja fazer?</p>
+        <button class="btn-configurar-conta" (click)="onMudarSenhaClick()">Mudar senha</button>
+        <button class="btn-configurar-conta">Mudar foto de perfil</button>
+        <button class="btn-configurar-conta">Mudar informações pessoais</button>
+        <button class="btn-configurar-conta" (click)="onVoltarConfigurarContaClick()">Voltar</button>
+    </div>
+
+    <div class="painel-configurar-conta" *ngIf="mudarInfo">
+
+        <!-- mudar senha -->
+        <div *ngIf="mudarSenha">
+
+            <div class="textfield">
+                <label for="password">Nova senha</label>
+                <input type="password" name="password" placeholder="" [(ngModel)]="senha">
+            </div>
+
+            <div class="textfield">
+                <label for="confirmpassword">Repita a nova senha</label>
+                <input type="password" name="confirmpassword" placeholder="" [(ngModel)]="confirmacaoSenha">
+            </div>
+
+            <button class="btn-configurar-conta" (click)="onConfirmarMudarSenhaClick()">Confirmar</button>
+
+        </div>
 
     </div>
 
     <div class="painel-cursos">
         
-        <div class="div-area-aluno">
+        <div class="div-area-aluno" *ngIf="!outra_pagina">
             <p>Área Aluno</p>
             <br>
             <app-meus-cursos></app-meus-cursos>
         </div>
         
         
-        <div class="div-area-professor">
+        <div class="div-area-professor" *ngIf="!outra_pagina">
             <p>Área Professor</p>
             <br>
             <div class="div-area-professor-buttons">
-                <app-criar-curso></app-criar-curso>
-                <app-ver-curso></app-ver-curso>
+                <app-criar-curso (buttonClick)="onCriarCursoButtonClick()"></app-criar-curso>
+                <app-ver-curso (buttonClick)="onVerCursoButtonClick()"></app-ver-curso>
                 <app-editar-curso></app-editar-curso>
                 <app-deletar-curso></app-deletar-curso>
             </div>
+        </div>
+
+        <div class="painel-cursos-edicao" *ngIf="outra_pagina">
+            
+            <!-- criar curso -->
+            <div *ngIf="criar_curso" class="div-criar-curso">
+                <div class="textfield">
+                    <label for="name">Título do curso:</label>
+                    <input type="text" name="name" placeholder="" [(ngModel)]="nomeDoCurso" style="width: 30vw;">
+                </div>
+
+                <button class="button-criar-funcao" (click)="onCriarCursoTituloButtonClick()">CRIAR CURSO</button>
+            </div>
+
+            <!-- selecionar curso -->
+            <div *ngIf="selecionar_curso" class="div-selecionar-curso">
+                
+            </div>
+
+
+
         </div>
         
     </div>

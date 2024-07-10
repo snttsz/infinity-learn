@@ -31,7 +31,6 @@ public class CursoDAO extends DAO<Curso>{
             stmt.setInt(1, id);
 
             stmt.executeUpdate();
-            
 
         }
         catch(Exception e)
@@ -45,7 +44,7 @@ public class CursoDAO extends DAO<Curso>{
     }
 
     @Override
-    public void insert(Curso curso) 
+    public void insert(Curso curso) throws SQLException
     {
         try
         {
@@ -55,17 +54,20 @@ public class CursoDAO extends DAO<Curso>{
             
             String instrucao = "INSERT INTO " + CursoDAO.nomeTabela +  
             "(" + 
-            Curso.Coluna.TITULO.getNomeColuna() +
+            Curso.Coluna.TITULO.getNomeColuna() + ", " +
+            Curso.Coluna.PROFESSOR_ID.getNomeColuna() +
             ")" +
-            "VALUES(?);";
+            "VALUES(?, ?);";
 
             PreparedStatement stmt = conexao.prepareStatement(instrucao);            
             stmt.setString(1, curso.getTitulo());
+            stmt.setInt(2, curso.getProfessor_id());
             stmt.executeUpdate();
         }
         catch(Exception e)
         {
-            System.out.println("Erro em inserir Usuário: " + e.getMessage());
+            throw new SQLException("Falha em insert do Curso -> " + e.getMessage());
+            // System.out.println("Erro em inserir Usuário: " + e.getMessage());
         }
         finally
         {
@@ -86,7 +88,7 @@ public class CursoDAO extends DAO<Curso>{
             String url = "jdbc:sqlite:src/main/resources/database/database.db";
             conexao = DriverManager.getConnection(url);
     
-            String instrucao = "SELECT * FROM " + CursoDAO.nomeTabela; // Assumindo que o nome da tabela é "curso"
+            String instrucao = "SELECT * FROM " + CursoDAO.nomeTabela; 
     
             stmt = conexao.prepareStatement(instrucao);
             rs = stmt.executeQuery();
@@ -183,6 +185,51 @@ public Curso selectById(int id) {
         {
             SQLiteConnectionManager.desconectar();
         }        
+    }
+
+    public ArrayList<Curso> getAllFromProfessor(int user_id) throws SQLException
+    {
+        ArrayList<Curso> cursos = new ArrayList<>();
+
+        try
+        {
+            Class.forName("org.sqlite.JDBC");
+            
+            String url = "jdbc:sqlite:src/main/resources/database/database.db";   
+
+            Connection conexao = DriverManager.getConnection(url);
+
+            String instrucao = "SELECT * FROM " + nomeTabela + " WHERE " + Curso.Coluna.PROFESSOR_ID.getNomeColuna() + " = ?";
+
+            PreparedStatement stmt = conexao.prepareStatement(instrucao);
+            
+            stmt.setInt(1, user_id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) 
+            {
+                int id = rs.getInt(Curso.Coluna.ID.getNomeColuna());
+                String titulo = rs.getString(Curso.Coluna.TITULO.getNomeColuna());
+                int professorId = rs.getInt(Curso.Coluna.PROFESSOR_ID.getNomeColuna());
+
+                Curso curso = new Curso(titulo, professorId);
+                curso.setId(id);
+
+                cursos.add(curso);
+            }
+
+
+        }
+        catch(Exception e)
+        {
+            SQLiteConnectionManager.desconectar();
+            throw new SQLException("Falha em insert do Curso -> " + e.getMessage());
+        }
+
+        SQLiteConnectionManager.desconectar();
+
+        return cursos;
     }
 
 

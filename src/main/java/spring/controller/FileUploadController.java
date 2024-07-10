@@ -1,6 +1,6 @@
 package spring.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +20,7 @@ public class FileUploadController
     @Autowired
     private FileStorageService fileStorageService;
 
-    @PostMapping("/upload/profilepictures")
+    @PutMapping("/upload/profilepictures")
     public ResponseEntity<String> handleUploadProfilePic(@RequestParam("file") MultipartFile file, int user_id) 
     {
         try

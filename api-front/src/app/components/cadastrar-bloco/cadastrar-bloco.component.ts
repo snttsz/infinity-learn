@@ -128,8 +128,6 @@ export class CadastrarBlocoComponent
                     this.email
                 );
 
-                console.log("user id -> " + this.userId);
-
                 if (!this.userId)
                 {
                     alert("Não foi possível completar o cadastro. Tente novamente mais tarde!");
@@ -138,9 +136,10 @@ export class CadastrarBlocoComponent
             }
 
         }
-        else if (this.partOfRegister > 3)
+        else if (this.partOfRegister >= 3)
         {
-            this.router.navigate(["/home"]);
+            alert("Conta criada com sucesso!");
+            window.location.reload();
         }
 
         return result;
@@ -153,9 +152,8 @@ export class CadastrarBlocoComponent
         /* 
             Nome de usuário já existe no banco de dados
         */
-        if (false)
+        if (await this.httpManager.checkUserExists(this.usuario))
         {
-            // TODO -> checar no banco de dados se o usuário já existe
             this.userAlreadyExists = true;
         }
         else

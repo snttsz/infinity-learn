@@ -4,14 +4,13 @@ public class Usuario
 {
     
     /* CONSTRUTORES */
-    public Usuario(String nome, String senha, String email, String apelido, String linkFoto, String tipo) 
+    public Usuario(String nome, String senha, String email, String nomeCompleto, String apelido) 
     {
         this.nome = nome;
+        this.nomeCompleto = nomeCompleto;
         this.senha = senha;
         this.email = email;
         this.apelido = apelido;
-        this.linkFoto = linkFoto;
-        this.tipo = tipo;
     }
 
     /* FUNÇÕES GERAIS */
@@ -19,6 +18,7 @@ public class Usuario
     {
         System.out.println("ID: " + usuario.getId());
         System.out.println("Nome:" + usuario.getNome());
+        System.out.println("Nome completo: " + usuario.getNomeCompleto());
         System.out.println("E-mail: " + usuario.getEmail());
         System.out.println("Senha: " + usuario.getSenha());
         System.out.println("Url_foto: " + usuario.getLinkFoto());
@@ -76,14 +76,22 @@ public class Usuario
     {
         this.linkFoto = linkFoto;
     }
-    public String getTipo() 
-    {
-        return tipo;
+    // public String getTipo() 
+    // {
+    //     return tipo;
+    // }
+
+    // public void setTipo(String tipo)
+    // {
+    //     this.tipo = tipo;
+    // }
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
 
-    public void setTipo(String tipo)
-    {
-        this.tipo = tipo;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
     /* 
@@ -94,10 +102,10 @@ public class Usuario
         ID("id"),
         NOME("nome"),
         SENHA("senha"),
+        NOMECOMPLETO("nome_completo"),
         EMAIL("email"),
         APELIDO("apelido"),
-        URL_FOTO("url_foto"),
-        TIPO("tipo");
+        URL_FOTO("url_foto");
 
         public final String nomeColuna;
 
@@ -117,23 +125,23 @@ public class Usuario
     /* 
      * Enum com os tipos possíveis de usuários
      */
-    public static enum TipoUsuario
-    {
-        ALUNO("aluno"),
-        PROFESSOR("professor");
+    // public static enum TipoUsuario
+    // {
+    //     ALUNO("aluno"),
+    //     PROFESSOR("professor");
 
-        public final String tipoUsuario;
+    //     public final String tipoUsuario;
 
-        TipoUsuario(String nomeDoTipo)
-        {
-            this.tipoUsuario = nomeDoTipo;
-        }
+    //     TipoUsuario(String nomeDoTipo)
+    //     {
+    //         this.tipoUsuario = nomeDoTipo;
+    //     }
 
-        public String getNomeDoTIpo()
-        {
-            return this.tipoUsuario;
-        }
-    }
+    //     public String getNomeDoTIpo()
+    //     {
+    //         return this.tipoUsuario;
+    //     }
+    // }
 
 
     /* ATRIBUTOS */
@@ -143,7 +151,7 @@ public class Usuario
     String email;
     String apelido;
     String linkFoto;
-    String tipo;
+    String nomeCompleto;
 
     
 }

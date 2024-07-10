@@ -22,26 +22,21 @@ public class Application
 {
 	public static void main(String[] args) 
 	{
-		//SpringApplication.run(Application.class, args);
-
 		SQLiteTableManager sqLiteTableManager = new SQLiteTableManager();
+		SpringApplication.run(Application.class, args);
 		
+		// TarefaDAO tarefaDAO = new TarefaDAO();
+		// QuestaoDAO questaoDAO = new QuestaoDAO();
+
+		// Questao questao = new Questao("questao d", 2);
+		// Tarefa tarefa = new Tarefa(9, 1);
 		
-		TarefaDAO tarefaDAO = new TarefaDAO();
-		QuestaoDAO questaoDAO = new QuestaoDAO();
-
-		Questao questao = new Questao("questao d", 2);
-		Tarefa tarefa = new Tarefa(9, 1);
+		// tarefaDAO.delete(2);
 		
-		tarefaDAO.delete(2);
-		
-		for(Tarefa t: tarefaDAO.selectAll())
-		{
-			Tarefa.printarTarefa(t);
-		}
-
-
-
+		// for(Tarefa t: tarefaDAO.selectAll())
+		// {
+		// 	Tarefa.printarTarefa(t);
+		// }
 
 	}
 }

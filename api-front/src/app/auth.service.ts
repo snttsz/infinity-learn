@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,11 +7,15 @@ import { Injectable } from '@angular/core';
 
 export class AuthService 
 {
-  private isLoggedIn: boolean = true;
+  private isLoggedIn: boolean = false;
 
-  constructor() { }
+  constructor(private cookieService: CookieService) 
+  {
+    const currentUser = this.cookieService.get('currentUser');
+    this.isLoggedIn = currentUser ? true : false;
+  }
 
-  login(username: string, nickname: string, email: string, urlPic: string, fullName: string) 
+  login(username: string, nickname: string, email: string, urlPic: string, fullName: string, id: number) 
   {
     this.isLoggedIn = true;
 
@@ -20,14 +25,16 @@ export class AuthService
       email: email,
       urlPic: urlPic,
       fullName: fullName,
+      id: id
     };
 
-    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    this.cookieService.set('currentUser', JSON.stringify(currentUser));
   }
 
   logout() 
   {
     this.isLoggedIn = false; 
+    this.cookieService.delete('currentUser');
   }
 
   isLoggedInUser(): boolean 
@@ -37,6 +44,6 @@ export class AuthService
 
   getCurrentUser(): any 
   {
-    return JSON.parse(localStorage.getItem('currentUser') || '{}');
+    return JSON.parse(this.cookieService.get('currentUser') || '{}');
   }
 }

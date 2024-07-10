@@ -32,7 +32,6 @@ public class SQLiteTableManager
     */
     public void inicializarBanco()
     {
-
         this.scriptPath = "src/main/resources/database/script.txt";
                 
         ArrayList<String> instrucoes = new ArrayList<String>();
@@ -42,8 +41,6 @@ public class SQLiteTableManager
         {   
             SQLiteConnectionManager.enviarQuery(instrucao);
         }
-
-
     }
 
      /* 
@@ -194,7 +191,6 @@ public class SQLiteTableManager
     public static ArrayList<String> lerScriptSQL(String caminhoArquivo) 
     {
         ArrayList<String> instrucoes = new ArrayList<>();
-
         
         try
         {
