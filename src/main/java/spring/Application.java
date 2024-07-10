@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"spring.controller", "spring.config"})
@@ -27,18 +28,24 @@ public class Application
 		SQLiteTableManager sqLiteTableManager = new SQLiteTableManager();
 		
 		
-		TarefaDAO tarefaDAO = new TarefaDAO();
-		QuestaoDAO questaoDAO = new QuestaoDAO();
+		Usuario user = new Usuario(" kalvin","123", "kalvin@","kalvin", "kalvin/","aluno");
+		UsuarioDAO ud = new UsuarioDAO();
 
-		Questao questao = new Questao("questao d", 2);
-		Tarefa tarefa = new Tarefa(9, 1);
-		
-		tarefaDAO.delete(2);
-		
-		for(Tarefa t: tarefaDAO.selectAll())
-		{
-			Tarefa.printarTarefa(t);
-		}
+		System.out.println("Usuário antes do update:");
+		Usuario.printarUsuario(user);
+
+		user.setNome("Glenda");
+		user.setSenha("gcrs");
+		user.setEmail("glenda123@");
+		user.setApelido("glendinha");
+		user.setLinkFoto("glenda/home/");
+		user.setTipo("otaria");
+
+		ud.update(user);
+		System.out.println("\nUsuário depois do update: ");
+		Usuario.printarUsuario(user);
+
+
 
 
 

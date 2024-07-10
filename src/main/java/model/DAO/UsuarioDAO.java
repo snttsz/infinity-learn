@@ -215,11 +215,12 @@ public class UsuarioDAO extends DAO<Usuario>
             Usuario.Coluna.SENHA.getNomeColuna() + " = ?, " +
             Usuario.Coluna.EMAIL.getNomeColuna() + " = ?, " +
             Usuario.Coluna.APELIDO.getNomeColuna() + " = ?, " +
-            Usuario.Coluna.URL_FOTO.getNomeColuna() + " = ? " +
+            Usuario.Coluna.URL_FOTO.getNomeColuna() + " = ?, " +
             Usuario.Coluna.TIPO.getNomeColuna() + " = ? " +
-            "WHERE id = ?";
+            " WHERE id = ?";
             
             
+            System.out.println(instrucao);
             PreparedStatement stmt = conexao.prepareStatement(instrucao);
             
             stmt.setString(1, usuario.getNome());
