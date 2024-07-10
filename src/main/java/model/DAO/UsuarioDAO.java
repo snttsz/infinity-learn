@@ -279,6 +279,7 @@ public class UsuarioDAO extends DAO<Usuario>
             "WHERE id = ?";
             
             
+            System.out.println(instrucao);
             PreparedStatement stmt = conexao.prepareStatement(instrucao);
             
             stmt.setString(1, usuario.getNome());
